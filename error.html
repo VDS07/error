@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day ❤️</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3, #ff92d0);
+        }
+
+        .background-emojis {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -2;
+        }
+
+        .background-emojis span {
+            position: absolute;
+            font-size: 120px;
+            opacity: 0.65;
+            filter: blur(3.5px);
+        }
+
+        .emoji1 { top: 0%; left: 0%; }
+        .emoji2 { top: 0%; right: 0%; }
+        .emoji3 { bottom: 5%; left: 2%; }
+        .emoji4 { bottom: 5%; right: 5%; }
+        .emoji5 { top: 20%; left: 40%; }
+        .emoji6 { bottom: 30%; right: 0%; }
+        .emoji7 { top: 70%; left: 40%; }
+
+        .photo-collage {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .photo-collage img {
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border: 5px solid white;
+            border-radius: 15px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+            transform: rotate(var(--rotate));
+        }
+
+        .photo1 { top: 8%; left: 10%; --rotate: -10deg; }
+        .photo2 { top: 8%; right: 10%; --rotate: 10deg; }
+        .photo3 { bottom: 20%; left: 12%; --rotate: -12deg; }
+        .photo4 { bottom: 20%; right: 12%; --rotate: 12deg; }
+
+        h1 {
+            color: white;
+            font-size: 50px;
+            font-family: 'Parisienne', cursive;
+            text-shadow: 3px 3px 10px rgba(255, 255, 255, 0.9);
+            animation: fadeIn 2s ease-in-out;
+            margin-bottom: 40px;
+        }
+
+        .heart-button {
+            background: none;
+            border: none;
+            font-size: 50px;
+            cursor: pointer;
+            animation: pump 1s infinite alternate;
+        }
+
+        .hover-text {
+            font-size: 14px;
+            color: white;
+            animation: pump 1s infinite alternate;
+            margin-top: -10px;
+        }
+
+        @keyframes pump {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.2); }
+        }
+
+        .heart-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .heart {
+            position: absolute;
+            color: red;
+            font-size: 24px;
+            animation: floatUp 2s linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-100px) scale(1.5); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-emojis">
+        <span class="emoji1">🌹</span>
+        <span class="emoji2">🎀</span>
+        <span class="emoji3">💐</span>
+        <span class="emoji4">🎀</span>
+        <span class="emoji5">💖</span>
+        <span class="emoji6">💗</span>
+        <span class="emoji7">💝</span>
+        
+    </div>
+    <h1 id="popup-text">Happy Valentine's Day, My Love! ❤️</h1>
+    <div class="photo-collage">
+        <img src="PASTE_IMAGE_LINK_HERE" class="photo1">
+        <img src="PASTE_IMAGE_LINK_HERE" class="photo2">
+        <img src="PASTE_IMAGE_LINK_HERE" class="photo3">
+        <img src="PASTE_IMAGE_LINK_HERE" class="photo4">
+    </div>
+    <button class="heart-button" onclick="createHearts()">💗</button>
+    <div  class="hover-text">Touch</div>
+    <div class="heart-container" id="heart-container"></div>
+    <script>
+        function createHearts() {
+            const container = document.getElementById('heart-container');
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '❤️';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.top = Math.random() * 100 + 'vh';
+                heart.style.animationDuration = (Math.random() * 2 + 1) + 's';
+                container.appendChild(heart);
+                setTimeout(() => heart.remove(), 2000);
+            }
+        }
+    </script>
+</body>
+</html>
